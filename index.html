@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            font-family: cursive;
+            font-weight: bold;
+        }
+        
+        .container{
+           
+            margin: auto;
+            max-width: 400px;
+            height: 500px;
+            width: 400px;
+            background: linear-gradient(90deg, #0026ff63 0%, #29f5e4 100%);
+            border-radius: 25px;
+            padding: 5px;
+        }
+        .cuerpo{
+
+            background-color: rgb(255, 255, 255);
+            text-align: center;
+            background-size: cover;
+            background-repeat: no-repeat ;
+            background-position: center center;
+            height: 350px;
+            margin: 10px;
+        }
+        .botones{
+            margin: auto;
+
+            width: 395px;
+            background-color: blue;
+            border-radius: 25%;
+            background: none;
+        }
+        button{
+            
+            border-radius: 15px;
+            font-size: 20px;
+            max-width: 385px;
+            max-height: 220px;
+            width: 190px;
+            height: 55px;
+            margin: auto;
+        }
+        .btn-1{
+            background: #5fc280;
+            border: 2px solid #29a029;
+            box-shadow: #00000083 5px 5px 10px;
+        }
+        .btn-1:hover{
+            background: #29a029 ;
+            border: 2px solid #14b314;
+            box-shadow: #00000083 -5px -5px 10px;
+        }
+
+        .btn-2{
+            background: #b31414;
+            border: 2px solid #8d2626;
+            box-shadow: #00000083 5px 5px 10px;
+        }
+        .btn-2:hover{
+            background: #8d2626 ;
+            border: 2px solid #b31414;
+            box-shadow: #00000083 -5px -5px 10px;
+        }
+        img{
+            image-rendering: pixelated;
+            margin: 0px ;
+            width:350px ;
+            height: 250px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="cuerpo"  class="cuerpo">
+            <h1 id="mensaje" style="text-align: center;margin: auto; padding: 10px;"> me disculpas amor</h1>
+           <br>
+           
+            <img src="fondo.gif" alt="foto" autoplay >
+           
+        </div>
+
+        <div class="botones">
+            <button id="btn-1" class="btn-1" onclick="crecerBoton( 'btn-1' );">Si te perdono</button>
+            <button id="btn-2" class="btn-2" value="2" onclick="crecerBoton('btn-2');">No te perdono</button>
+        </div>
+    </div>
+
+    <script>
+        
+        var disculpa = 1;
+        var altoPagina = window.innerHeight;
+        var anchoPagina = window.innerWidth;
+        var aler;
+        var cont = 0;
+        var alto = 55;
+        var ancho = 190;
+        var font = 20; 
+
+    function crecerBoton(boton){
+        if ( 'btn-1' == String(boton)){
+            
+            if(disculpa == 1){
+                disculpa = 2;
+
+                alert = document.getElementById('cuerpo');
+                alert.innerHTML = '<h1 style="text-align: center;margin: 0; padding: 0px;">Gracias Amor, Te Amo mucho!!!</h1><img src="kiss.gif" alt="" autoplay>';    
+                document.getElementById('alert').appendChild(alert);
+            }else{
+                alert = document.getElementById('cuerpo');
+                alert.innerHTML = '<h1 style="text-align: center;margin: 0; padding: 0px;">De verdad Te Amo mucho amor!!!</h1><img src="fondo5.gif" alt="" autoplay>';    
+                document.getElementById('alert').appendChild(alert);
+            }
+        }else{
+            cont += 1; 
+        if(alto < 200){
+            newAlto= alto +25;
+            alto = newAlto;
+            
+            newAncho= ancho +35;
+            ancho = newAncho;
+            
+            newFont= font +3;
+            font = newFont;
+
+                document.getElementById('btn-1').style.height = alto+'px';
+                document.getElementById('btn-1').style.width = ancho+'px';
+                document.getElementById('btn-1').style.transition = "500ms all ease";
+                document.getElementById('btn-1').style.fontSize = font+'px';
+                
+            }else{ 
+                if(anchoPagina != window.innerWidth ||  altoPagina != window.innerHeight){
+                    altoPagina = window.innerHeight;
+                    anchoPagina = window.innerWidth;
+                }
+                var varX = Math.floor((Math.random() * (anchoPagina * 0.70)));
+                var varY = Math.floor((Math.random() * (altoPagina * 0.70)));
+                //document.getElementById('btn-2').style.display = 'none'; 
+        
+                document.getElementById('btn-2').style.position = 'absolute'; 
+                document.getElementById('btn-2').style.right = varX+'px';
+                document.getElementById('btn-2').style.top = varY+'px';
+                document.getElementById('btn-2').style.zIndex = '1px';
+                document.querySelector('.botones').style.textAlign = 'center';
+            }
+            if(disculpa == 1){
+                if(cont < 5){
+                    alert = document.getElementById('cuerpo');
+                    alert.innerHTML = '<h1 style="text-align: center;margin: 0; padding: 00px;">sabes que fue sin intencion</h1><img src="fondo3.gif" alt="" autoplay>';    
+                    document.getElementById('alert').appendChild(alert);
+                }else if(cont > 4 && cont < 10){
+                    alert = document.getElementById('cuerpo');
+                    alert.innerHTML = '<h1 style="text-align: center;margin: auto; padding: 0px;">De verdad perdoname</h1> <br> <img src="fondo4.gif" alt="" autoplay>';    
+                    document.getElementById('alert').appendChild(alert);
+                }else{
+                    alert = document.getElementById('cuerpo');
+                    alert.innerHTML = '<h1 style="text-align: center;margin: 0px; padding: 0px;">ya enserio me perdonas </h1> <img src="fondo2.gif" alt="" autoplay>';    
+                    document.getElementById('alert').appendChild(alert);
+                }
+            }else{ 
+                    alert = document.getElementById('cuerpo');
+                    alert.innerHTML = '<h1 style="text-align: center;margin: 0px; padding: 0px;">ya estarde ya esta todo arregaldo </h1> <img src="fondo6.gif" alt="" >';    
+                    document.getElementById('alert').appendChild(alert);
+                
+
+            }
+            
+        }
+        
+        
+    }
+    
+    setInterval(
+    function(){
+       
+     if(alto == 205){
+        document.getElementById('btn-1').style.height = '220px';
+        document.getElementById('btn-1').style.width = '385px';
+        document.getElementById('btn-1').style.transition = "1s all ease";
+        alto = 220;
+     }else if(alto == 220) {
+        document.getElementById('btn-1').style.height = '205px';
+        document.getElementById('btn-1').style.width = '370px';
+        document.getElementById('btn-1').style.transition = "1s all ease";
+        alto = 205;
+     }
+    },1000)
+
+    setInterval(
+        function(){
+            if(anchoPagina != window.innerWidth ||  altoPagina != window.innerHeight){
+                altoPagina = window.innerHeight;
+                anchoPagina = window.innerWidth;
+
+                var varX = Math.floor((Math.random() * (anchoPagina * 0.70)));
+                var varY = Math.floor((Math.random() * (altoPagina * 0.70)));
+                //document.getElementById('btn-2').style.display = 'none'; 
+        
+                document.getElementById('btn-2').style.position = 'absolute'; 
+                document.getElementById('btn-2').style.right = varX+'px';
+                document.getElementById('btn-2').style.top = varY+'px';
+                document.getElementById('btn-2').style.zIndex = '1px';
+                document.querySelector('.botones').style.textAlign = 'center';
+            }
+        },1000)
+
+</script>
+</body>
+</html>
